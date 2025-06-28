@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+    <header>
+        <h1>Property Prediction Site</h1>
+        <a href="/login" class="btn btn-danger">Sign Out</a>
+    </header>
+
+    <h2>Choose an Option</h2>
+    <p class="info-text">
+        Our property prediction tool helps you estimate property prices based on various factors. 
+        Get insights and make informed real estate decisions!
+    </p>
+
+    <a href="/form" class="btn">Go to Form Page</a>
+    <a href="/prediction" class="btn">Go to Prediction Page</a>
+
+
+</body>
+</html>

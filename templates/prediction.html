@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Price Prediction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (performance.navigation.type === 1) {  // Check if page was refreshed
+                // Clear form fields
+                document.querySelectorAll("input").forEach(input => input.value = "");
+
+                // Hide prediction
+                const predictionElement = document.getElementById("prediction-container");
+                if (predictionElement) {
+                    predictionElement.style.display = "none";
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        Property Prediction Site
+        <a href="/home" class="btn">Home</a>
+    </header>
+
+    <h2>Predict Property Price</h2>
+    <form method="POST">
+        <input type="text" name="area_type" placeholder="Area Type" required value="{{ request.form['area_type'] if request.method == 'POST' else '' }}">
+        <input type="text" name="location" placeholder="Location" required value="{{ request.form['location'] if request.method == 'POST' else '' }}">
+        <input type="number" name="size" placeholder="Size (BHK)" required value="{{ request.form['size'] if request.method == 'POST' else '' }}">
+        <input type="number" step="0.01" name="total_sqft" placeholder="Total Sqft" required value="{{ request.form['total_sqft'] if request.method == 'POST' else '' }}">
+        <input type="number" name="bath" placeholder="Bathrooms" required value="{{ request.form['bath'] if request.method == 'POST' else '' }}">
+        <input type="number" name="balcony" placeholder="Balconies" required value="{{ request.form['balcony'] if request.method == 'POST' else '' }}">
+        <button type="submit">Predict</button>
+    </form>
+    
+    {% if prediction %}
+        <h3 id="prediction-container">Predicted Price: {{ prediction }} Lakhs</h3>
+    {% endif %}
+</body>
+</html>

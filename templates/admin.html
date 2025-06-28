@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Admin - Property Listings</h2>
+    <table border="1">
+        <tr>
+            <th>City</th>
+            <th>Pincode</th>
+            <th>Survey</th>
+            <th>Price</th>
+            <th>Area</th>
+            <th>Owner</th>
+        </tr>
+        {% for property in properties %}
+        <tr>
+            <td>{{ property[1] }}</td>
+            <td>{{ property[2] }}</td>
+            <td>{{ property[3] }}</td>
+            <td>{{ property[4] }}</td>
+            <td>{{ property[5] }}</td>
+            <td>{{ property[6] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
